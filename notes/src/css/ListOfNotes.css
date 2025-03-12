@@ -1,0 +1,21 @@
+.note-item {
+    background-color: white;
+    border-radius: 10px;
+    text-align: left;
+    height: 10vh;
+    width: 30vw;
+    padding: 2vh;
+    margin: 2vh;
+}
+
+.clipable-text{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.light-text{
+    color: rgb(132, 152, 165);
+    margin: 0;
+    font-size: 0.8rem;
+}

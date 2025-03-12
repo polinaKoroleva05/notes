@@ -1,0 +1,9 @@
+.note{
+    background-color: white;
+    border-radius: 10px;
+    text-align: left;
+    height: 90vh;
+    width: 60vw;
+    padding: 2vh;
+    margin: 2vh;
+}

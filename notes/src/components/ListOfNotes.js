@@ -1,4 +1,4 @@
-import './../App.css';
+import './../css/ListOfNotes.css';
 
 export default function ListOfNotes(props) {
     console.log(props)
@@ -6,8 +6,12 @@ export default function ListOfNotes(props) {
         <div className='list'>
             {props.listNotes.map((note, id) =>
                 <div className='note-item' onClick={() => props.onChangeId(id)}>
+                    <p className='light-text'>{note.date}</p>
                     <b>{note.name}</b>
-                    <p>{note.content}</p>
+                    <div className='clipable-text'>
+                    {note.content}
+                    </div>
+                    
                 </div>)}
         </div>
     );
