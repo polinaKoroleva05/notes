@@ -14,12 +14,19 @@ function App() {
     useEffect(() => {
         getApiData()
     }, [])
+
+    const deleteNote = ()=>{
+        listNotes.splice(openedNoteId, 1); 
+        console.log(listNotes);
+        changeListNotes(listNotes);
+        changeOpenedNoteId(-1);
+    }
     return (
         <div className='App'>
             <div className='container'>
                 <ListOfNotes listNotes={listNotes} onChangeId={id=>changeOpenedNoteId(id)}/>
                 {console.log(listNotes[openedNoteId])}
-                <Note note={listNotes[openedNoteId]} onChangeNote={(newNote)=>{changeListNotes([openedNoteId] = newNote)}}/>
+                <Note note={listNotes[openedNoteId]} onChangeNote={(newNote)=>{changeListNotes([openedNoteId] = newNote)}} onDeleteNote={deleteNote}/>
             </div>
         </div>
     );
