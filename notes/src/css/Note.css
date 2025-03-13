@@ -21,6 +21,7 @@
     width: 48vw;
     height: 90vh;
     font-size: 1rem;
+    border: none;
 }
 
 .name-field{
@@ -31,4 +32,5 @@
     height: 3rem;
     font-size: 2rem;
     margin-bottom: 2vh;
+    border: none;
 }
