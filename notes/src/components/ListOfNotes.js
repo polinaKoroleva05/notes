@@ -12,7 +12,7 @@ export default function ListOfNotes(props) {
                     {note.content}
                     </div>
                     
-                </div>)}
+                </div>).toReversed()}
         </div>
     );
 }

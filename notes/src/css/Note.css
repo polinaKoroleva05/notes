@@ -9,5 +9,26 @@
     padding-top: 5vh;
     margin: 2vh;
     margin-left: 3vw;
-    overflow-y: auto;
+    overflow-y: hidden;
+    white-space: pre-wrap;
+}
+
+
+.content-field{
+    font-family: inherit;
+    display: flex;
+    resize: none;
+    width: 48vw;
+    height: 90vh;
+    font-size: 1rem;
+}
+
+.name-field{
+    font-weight: bold;
+    font-family: inherit;
+    resize: none;
+    width: 48vw;
+    height: 3rem;
+    font-size: 2rem;
+    margin-bottom: 2vh;
 }

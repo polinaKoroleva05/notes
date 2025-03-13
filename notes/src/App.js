@@ -15,18 +15,26 @@ function App() {
         getApiData()
     }, [])
 
-    const deleteNote = ()=>{
-        listNotes.splice(openedNoteId, 1); 
+    const deleteNote = () => {
+        listNotes.splice(openedNoteId, 1);
         console.log(listNotes);
         changeListNotes(listNotes);
         changeOpenedNoteId(-1);
     }
+
+    const changeNote = (newNote) => {
+        console.log('here')
+        listNotes.splice(openedNoteId, 1);
+        changeListNotes([...listNotes, newNote]);
+        changeOpenedNoteId(listNotes.length);
+    }
     return (
         <div className='App'>
             <div className='container'>
-                <ListOfNotes listNotes={listNotes} onChangeId={id=>changeOpenedNoteId(id)}/>
-                {console.log(listNotes[openedNoteId])}
-                <Note note={listNotes[openedNoteId]} onChangeNote={(newNote)=>{changeListNotes([openedNoteId] = newNote)}} onDeleteNote={deleteNote}/>
+                {console.log("listnotes before before", listNotes)}
+                <ListOfNotes listNotes={listNotes} onChangeId={id => changeOpenedNoteId(id)} />
+                {console.log("listnotes before", listNotes)}
+                <Note note={listNotes[openedNoteId]} onChangeNote={changeNote} onDeleteNote={deleteNote} />
             </div>
         </div>
     );
