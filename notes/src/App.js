@@ -27,6 +27,7 @@ export default function App() {
 
     const changeNote = (newNote) => {
         listNotes.splice(openedNoteId, 1);
+        newNote.date = (new Date()).toDateString();
         changeListNotes([...listNotes, newNote]);
         changeOpenedNoteId(listNotes.length);
     }
@@ -36,10 +37,10 @@ export default function App() {
         navigate('/');
     }
 
-    const addNote = () => {
+    const addNote = (newNote) => {
         console.log('here')
-
-        changeListNotes([...listNotes, { name: '', content: '' }]);
+        newNote.date = (new Date()).toDateString();
+        changeListNotes([...listNotes, newNote]);
         changeOpenedNoteId(listNotes.length);
     }
     return (
@@ -48,7 +49,7 @@ export default function App() {
             <div className='container'>
                 <ListOfNotes listNotes={listNotes} onChangeId={changeId} />
                 <Routes>
-                    <Route path="/addNote" element={<AddNote />}></Route>
+                    <Route path="/addNote" element={<AddNote onAddNote={addNote}/>}></Route>
                     <Route path="/*" element={<Note note={listNotes[openedNoteId]} onChangeNote={changeNote} onDeleteNote={deleteNote} />}></Route>
                 </Routes>
             </div>
