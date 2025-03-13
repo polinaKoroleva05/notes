@@ -10,7 +10,7 @@ export default function AddNote(props) {
 
     const validate = () => { //убедиться что текст заметки не пустой 
         if(noteCurrent.content.replace(/\s/g,'') === ''){
-            alert("empty")
+            alert("Содержимое заметки не может быть пустым!")
         }else{
             props.onAddNote(noteCurrent)
         }

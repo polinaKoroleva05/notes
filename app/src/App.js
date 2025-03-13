@@ -16,7 +16,6 @@ export default function App() {
         if(!localStorage.getItem('notes') || localStorage.getItem('notes')===undefined){
             localStorage.setItem('notes', JSON.stringify([testData]));
         }
-        console.log('testdata', testData)
         const notesFromStorage = JSON.parse(localStorage.getItem('notes'));
         changeListNotes(notesFromStorage);
         changeOpenedNoteId(notesFromStorage.length-1);
