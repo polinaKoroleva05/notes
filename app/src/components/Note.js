@@ -31,7 +31,10 @@ export default function Note(props) {
     return (
         <div className='note'>
             {noteCurrent === undefined ?
-                <p> Не выбрано </p> :
+                <div className='start'>
+                    <b> Несуществующая заметка! </b>
+                </div>
+                :
                 <div>
                     <div className='bar'>
                         {readOnlyMode === true ?

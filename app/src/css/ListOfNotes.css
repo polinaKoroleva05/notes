@@ -9,7 +9,7 @@
 }
 
 .list::-webkit-scrollbar-thumb{
-    background-color:  rgb(39, 35, 35);
+    background-color:  rgb(200, 183, 183);
     border-radius: 18px;
 }
 

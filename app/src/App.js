@@ -19,6 +19,7 @@ export default function App() {
         console.log('testdata', testData)
         const notesFromStorage = JSON.parse(localStorage.getItem('notes'));
         changeListNotes(notesFromStorage);
+        changeOpenedNoteId(notesFromStorage.length-1);
     }
 
     const saveApiData = (newListNotes) => {
@@ -26,14 +27,14 @@ export default function App() {
     }
 
     useEffect(() => {
-        getApiData()
+        getApiData();
     }, [])
 
     const deleteNote = () => {
         listNotes.splice(openedNoteId, 1);
-        changeListNotes(listNotes);
-        changeOpenedNoteId(-1);
-        saveApiData();
+        changeListNotes([...listNotes]);
+        changeOpenedNoteId(listNotes.length-1);
+        saveApiData(listNotes);
     }
 
     const changeNote = (newNote) => {
