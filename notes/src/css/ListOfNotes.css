@@ -1,7 +1,7 @@
 .list{
     width: 42vw;
     overflow-y: auto;
-    height: 100vh;
+    height: 95vh;
 }
 
 ::-webkit-scrollbar{
