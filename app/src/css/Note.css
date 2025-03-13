@@ -50,7 +50,17 @@
     color:  rgb(154, 147, 147);
 }
 
+.cancel-button{
+    font-size: 1.1rem;
+}
+
 .bar{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+}
+
+.date-text{
+    color:  rgb(154, 147, 147);
+    margin: 0;
+    font-size: 1rem;
 }
