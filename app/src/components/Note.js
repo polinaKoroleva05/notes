@@ -6,16 +6,15 @@ import { ImCheckmark } from "react-icons/im";
 export default function Note(props) {
     const [noteCurrent, changeNote] = useState(props.note);
     const [readOnlyMode, switchMode] = useState(true);
-    console.log("get", props.note, noteCurrent);
 
     useEffect(() => {
-        console.log("useEffect")
-        changeNote(props.note)
+        changeNote(props.note);
+        switchMode(true);
     }, [props.note])
 
     const validate = () => { //убедиться что текст заметки не пустой 
         if (noteCurrent.content.replace(/\s/g, '') === '') {
-            alert("empty")
+            alert("Содержимое заметки не может быть пустым!")
         } else {
             switchMode(true);
             props.onChangeNote(noteCurrent);
@@ -37,10 +36,13 @@ export default function Note(props) {
                 :
                 <div>
                     <div className='bar'>
+                        <p className='date-text'>{noteCurrent.date}</p>
+                        <div>
                         {readOnlyMode === true ?
                             <button className='edit-button' onClick={() => switchMode(false)}><MdEdit /></button> :
                             <button className='done-button' onClick={validate}><ImCheckmark /></button>}
                         <button className='delete-button' onClick={props.onDeleteNote}><MdDelete /></button>
+                        </div>
                     </div>
                     <textarea className='name-field' type='text' placeholder="Заголовок" readOnly={readOnlyMode} name='name' value={noteCurrent.name} onChange={validateNameInput} />
                     <textarea className='content-field' type='text' readOnly={readOnlyMode} name='content' value={noteCurrent.content} onChange={e => changeNote({ ...noteCurrent, content: e.target.value })} />
