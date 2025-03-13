@@ -4,12 +4,12 @@
     height: 95vh;
 }
 
-::-webkit-scrollbar{
+.list::-webkit-scrollbar{
     width: 6px;
 }
 
-::-webkit-scrollbar-thumb{
-    background-color:  rgb(172, 198, 193);
+.list::-webkit-scrollbar-thumb{
+    background-color:  rgb(39, 35, 35);
     border-radius: 18px;
 }
 

@@ -25,8 +25,8 @@ export default function AddNote(props) {
     return (
         <div className='note'>
             <div>
-                <button onClick={validate}><ImCheckmark/></button>
-                <button onClick={()=>navigate('/')}><ImCross/></button>
+                <button className='done-button' onClick={validate}><ImCheckmark/></button>
+                <button className='cancel-button' onClick={()=>navigate('/')}><ImCross/></button>
                 <textarea className='name-field' placeholder='Название' type='text' name='name' value={noteCurrent.name} onChange={validateNameInput} />
                 <textarea className='content-field' placeholder='Содержание' type='text' name='content' value={noteCurrent.content} onChange={e => changeNote({ ...noteCurrent, content: e.target.value })} />
             </div>
