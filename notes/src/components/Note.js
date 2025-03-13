@@ -1,5 +1,7 @@
 import './../css/Note.css'
 import { useEffect, useState } from 'react';
+import { MdEdit, MdDelete } from "react-icons/md";
+import { ImCheckmark } from "react-icons/im";
 
 export default function Note(props) {
     const [noteCurrent, changeNote] = useState(props.note);
@@ -11,19 +13,31 @@ export default function Note(props) {
         changeNote(props.note)
     }, [props.note])
 
+    const validate = () => { //убедиться что текст заметки не пустой 
+        if(noteCurrent.content.replace(/\s/g,'') === ''){
+            alert("empty")
+        }else{
+            switchMode(true);
+            props.onChangeNote(noteCurrent);
+        }
+    }
+
+    const validateNameInput = (e)=>{
+        if(e.target.value.indexOf('\n') === -1){ //если пользователь написал перенос строки - не реагируем
+            changeNote({ ...noteCurrent, name: e.target.value });
+        }
+    }
+
     return (
         <div className='note'>
             {noteCurrent === undefined ?
                 <p> Не выбрано </p> :
                 <div>
                     {readOnlyMode === true ?
-                        <button onClick={() => switchMode(false)}>ред</button> :
-                        <button onClick={() => {
-                            switchMode(true);
-                            props.onChangeNote(noteCurrent);
-                        }}>гот</button>}
-                    <button onClick={props.onDeleteNote}>удал</button>
-                    <textarea className='name-field' type='text' readOnly={readOnlyMode} name='name' value={noteCurrent.name} onChange={e => changeNote({ ...noteCurrent, name: e.target.value })} />
+                        <button onClick={() => switchMode(false)}><MdEdit/></button> :
+                        <button onClick={validate}><ImCheckmark /></button>}
+                    <button onClick={props.onDeleteNote}><MdDelete/></button>
+                    <textarea className='name-field' type='text' readOnly={readOnlyMode} name='name' value={noteCurrent.name} onChange={validateNameInput} />
                     <textarea className='content-field' type='text' readOnly={readOnlyMode} name='content' value={noteCurrent.content} onChange={e => changeNote({ ...noteCurrent, content: e.target.value })} />
                 </div>}
         </div>
