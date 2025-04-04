@@ -7,22 +7,28 @@ import AddNote from './components/AddNote';
 import testData from './testData/testData';
 import { MdAdd } from "react-icons/md";
 
+const nameOfLocalStorage = 'notes_by_koroleva2025';
+
 export default function App() {
     const [listNotes, changeListNotes] = useState([])
     const [openedNoteId, changeOpenedNoteId] = useState(-1)
     const navigate = useNavigate();
 
     const getApiData = () => {
-        if(!localStorage.getItem('notes') || localStorage.getItem('notes')===undefined){
-            localStorage.setItem('notes', JSON.stringify([testData]));
+        if(!localStorage.getItem(nameOfLocalStorage) || localStorage.getItem(nameOfLocalStorage)===undefined){
+            localStorage.setItem(nameOfLocalStorage, JSON.stringify([testData]));
         }
-        const notesFromStorage = JSON.parse(localStorage.getItem('notes'));
-        changeListNotes(notesFromStorage);
-        changeOpenedNoteId(notesFromStorage.length-1);
+        const notesFromStorage = JSON.parse(localStorage.getItem(nameOfLocalStorage));
+        let validNotes = notesFromStorage.filter(note => note.hasOwnProperty('name') && note.hasOwnProperty('content') && note.hasOwnProperty('date')); //если данные подпорчены, убираем их
+        if(!validNotes.length){
+            validNotes = [testData]; //если все данные оказались некорректными, устанавливаем начальную записку
+        }
+        changeListNotes(validNotes);
+        changeOpenedNoteId(validNotes.length-1);
     }
 
     const saveApiData = (newListNotes) => {
-        localStorage.setItem('notes', JSON.stringify(newListNotes));
+        localStorage.setItem(nameOfLocalStorage, JSON.stringify(newListNotes));
     }
 
     useEffect(() => {
